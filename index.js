@@ -39,7 +39,7 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-//Creating "Person" Constructor initializing "Name" and "Age"
+
 //Write a Person Constructor that initializes `name` and `age` from arguments.
 function Person(name, age) {
   this.name = name;
@@ -49,11 +49,10 @@ function Person(name, age) {
   this.stomach = [];
 }
 
-//Creating constructive function for eating edibles until 10 items are in stomach
+
 //Give instances of Person the ability to `.eat("someFood")`:
 // + When eating an edible, it should be pushed into the `stomach`.
 Person.prototype.eat = function (edible) {
-  //For loop to push to "stomach" array until 10 items
   // + The `eat` method should have no effect if there are 10 items in the `stomach`.
   if (this.stomach.length < 10) {
     this.stomach.push(edible);
@@ -111,12 +110,15 @@ Car.prototype.drive = function(distance){
   const milesTilEmpty = this.tank * this.milesPerGallon;
   //Creating if statement for having gas or running out
   if (distance <= milesTilEmpty) {
-    this.odometer = this.odometer = distance;
-    this.tank = this.tank - (distance / this.milesPerGallon);
-  }else{
+    //+ Should cause the `odometer` to go up.
+    this.odometer = this.odometer + distance;
+    //+ Should cause the the `tank` to go down taking `milesPerGallon` into account.
+    this.tank = this.tank - (distance / this.milesPerGallon)
+  } else {
+    // + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
     this.odometer = this.odometer + milesTilEmpty;
     this.tank = 0;
-    return `I ran out of fuel at ${this.odometer} miles!`;
+    return `I ran out of fuel at ${this.odometer} miles!`
   }
 }
 
